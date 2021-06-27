@@ -9,6 +9,7 @@
 #include <polygonstruct.h>
 #include <QString>
 #include "node.h"
+#include <pathfinder.h>
 
 class MapQFrame;
 
@@ -27,6 +28,7 @@ public:
     void changeNewPolygonMode();
     void changeDeletePolygonMode();
     void createNewPolygonMode();
+    void FindPath();
     int x,y;
     int trace_ability;
     bool StartMode = false, FinishMode = false, NewPolygonMode = false,

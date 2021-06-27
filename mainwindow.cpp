@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    this->setWindowTitle("Path Search");
+    this->setWindowTitle("Поиск пути");
 }
 
 MainWindow::~MainWindow()

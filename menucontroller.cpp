@@ -35,7 +35,7 @@ MenuController::MenuController(MainWindow* w) : QObject(w)
     connect(_newPolygonButton, &QPushButton::released, _mapFrame, &MapQFrame::changeNewPolygonMode);
     connect(_DeletePolygonButton, &QPushButton::released, _mapFrame, &MapQFrame::changeDeletePolygonMode);
     connect(_Create, &QPushButton::released, [=]{ MenuController::Create ();});
-    connect(_CreateARoute, &QPushButton::released, [=]{ MenuController::FindPath();});
+    connect(_CreateARoute, &QPushButton::released, _mapFrame, &MapQFrame::FindPath);
 
     _TraversabilitySpinBox ->hide();
     _Create ->hide();
@@ -53,6 +53,7 @@ MapQFrame* MenuController::GetMapFrame()
 }
 
 //ищем путь
+/*
 void MenuController::FindPath()
 {
     qDebug() << "Trying to Find Path";
@@ -63,8 +64,9 @@ void MenuController::FindPath()
     //Node* startNode = dataManager->startNode;
     //Node* endNode = dataManager->endNode;
 
-    Node* startNode = new Node(_mapFrame->StartX, _mapFrame->StartY);
-    Node* endNode = new Node(_mapFrame->FinishX, _mapFrame->FinishY);
+    Node* startNode = dataManager->startNode;
+    Node* endNode = dataManager->endNode;
+
 
     if (startNode == nullptr || endNode == nullptr)
     {
@@ -86,7 +88,7 @@ void MenuController::FindPath()
     _mapFrame->Repaint(dataManager);
 
 }
-
+*/
 //режимы
 void MenuController::ButtonsColor(bool stateS, bool stateF, bool stateNP, bool stateDP)
 {

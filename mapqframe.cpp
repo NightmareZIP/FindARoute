@@ -81,6 +81,7 @@ void MapQFrame::mousePressEvent(QMouseEvent* ev)
         {
             StartX=ev->x();
             StartY=ev->y();
+            dataManager->startNode = dataManager->map->NodeAt(StartX, StartY);
             /*if (dataManager->startNode==nullptr) dataManager->startNode = new Node(StartX,  StartY);
             else {
                 dataManager->startNode->x=StartX;
@@ -91,6 +92,7 @@ void MapQFrame::mousePressEvent(QMouseEvent* ev)
         {
             FinishX=ev->x();
             FinishY=ev->y();
+            dataManager->endNode = dataManager->map->NodeAt(FinishX, FinishY);
             /*if (dataManager->endNode==nullptr) dataManager->endNode = new Node(FinishX, FinishY);
             else {
                 dataManager->endNode->x=FinishX;
@@ -172,6 +174,40 @@ void MapQFrame::changeDeletePolygonMode(){
     FinishMode = false;
     if (NewPolygonMode) changeNewPolygonMode();
     emit ChangeButtons(StartMode, FinishMode, NewPolygonMode, DeletePolygonMode);
+
+}
+
+void MapQFrame::FindPath(){
+    qDebug() << "Trying to Find Path";
+    QElapsedTimer timer;
+    timer.start();
+
+    QVector<Node*> path;
+    //Node* startNode = dataManager->startNode;
+    //Node* endNode = dataManager->endNode;
+
+    Node* startNode = dataManager->startNode;
+    Node* endNode = dataManager->endNode;
+
+
+    if (startNode == nullptr || endNode == nullptr)
+    {
+        qDebug() << "Cannot find path.";
+        return;
+    }
+    qDebug() << "Sx " << startNode->x;
+    qDebug() << "Sy " << startNode->y;
+    qDebug() << "Fx " << endNode->x;
+    qDebug() << "Fy " << endNode->y;
+    //qDebug() << "M " << dataManager->map;
+    //dataManager ->startNode = startNode;
+    //dataManager -> endNode = endNode;
+    dataManager->BuildMap();
+    dataManager->lastFoundPath = Pathfinder::FindPath(startNode, endNode, dataManager->map);
+    path = dataManager->lastFoundPath;
+    qDebug() << "Found Path(" << dataManager->lastFoundPath.count() << ") in " << timer.elapsed() << "ms.";
+
+    repaint();
 
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>972</width>
-    <height>593</height>
+    <height>589</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -17,14 +17,15 @@
    <string>MainWindow</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">color:rgb(247, 247, 247); backround:rgb(208, 208, 208);</string>
+   <string notr="true">background-color: rgb(170, 0, 0);
+background-color: rgb(170, 0, 0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(22, 26, 56);</string>
+    <string notr="true"/>
    </property>
    <widget class="QPushButton" name="StartButton">
     <property name="geometry">
@@ -188,8 +189,8 @@
    <widget class="QSpinBox" name="SpinBox">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>270</y>
+      <x>790</x>
+      <y>170</y>
       <width>81</width>
       <height>25</height>
      </rect>
@@ -201,8 +202,8 @@
    <widget class="QPushButton" name="CreatePolygon">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>310</y>
+      <x>730</x>
+      <y>200</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -221,9 +222,15 @@
      <x>0</x>
      <y>0</y>
      <width>972</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Поиск пути</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
